@@ -76,8 +76,8 @@ void loop() {
     startTime = millis();
 
     while (!buttonIsPressed()) {
-      int roundedTime = getRoundedTime();
-      showRoundedTime(roundedTime);
+      int roundedTimeRemaining = getRoundedTimeRemaining();
+      showRoundedTimeRemaining(roundedTimeRemaining);
       debounce();
 
       if (timeIsUp()) gameOver();
@@ -139,15 +139,16 @@ void showNextWordInRandomSequence() {
   lcd.print(ANIMALS[roundNumber - 1]);
 }
 
-int getRoundedTime() {
-  return round((TIME_LIMIT - (millis() - startTime)) / 1000);
+int getRoundedTimeRemaining() {
+  long ellpasedTime = millis() - startTime;
+  return round((TIME_LIMIT - ellpasedTime ) / 1000);
 }
 
-void showRoundedTime(int roundedTime) {
+void showRoundedTimeRemaining(int roundedTimeRemaining) {
   lcd.setCursor(14, 1);
-  lcd.print(" ");
+  lcd.print("  "); // Clear the previous number
   lcd.setCursor(14, 1);
-  lcd.print(roundedTime);
+  lcd.print(roundedTimeRemaining);
 }
 
 void debounce() {
