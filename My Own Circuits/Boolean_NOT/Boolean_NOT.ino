@@ -2,33 +2,35 @@
  * Boolean NOT circuit using a button and an LED
  * by Mitchell Griest, Summer 2020
  * 
- * TinkerCad Circuit link: https://www.tinkercad.com/things/a5petd4HbrE-mighty-luulia-esboo/editel?tenant=circuits?sharecode=Mismn8_1YfFj8bcDSD2uctGl2eyOH_kL8kJZgohA7eM
+ * TinkerCad Circuit link: https://www.tinkercad.com/things/a5petd4HbrE
  */
 
-const int ledPin = 13;
-const int buttonPin = 8;
+const int LED_PIN = 13;
+const int BUTTON_PIN = 8;
+
+// -------------- Main Execution --------------
 
 void setup(){
-  pinMode(ledPin, OUTPUT);
-  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
 }
 
 void loop(){
-  if(buttonIsPressed()){
-    turnOffLed();
-  } else {
-    turnOnLed();
-  }
+  if(buttonIsPressed()) turnOffLed();
+  else turnOnLed();
+  delay(25); //Debounce the button
 }
 
+// -------------- Helper Functions --------------
+
 boolean buttonIsPressed(){
-  return digitalRead(buttonPin) == LOW;
+  return digitalRead(BUTTON_PIN) == LOW;
 }
 
 void turnOffLed(){
-  digitalWrite(ledPin, LOW);
+  digitalWrite(LED_PIN, LOW);
 }
 
 void turnOnLed(){
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(LED_PIN, HIGH);
 }
