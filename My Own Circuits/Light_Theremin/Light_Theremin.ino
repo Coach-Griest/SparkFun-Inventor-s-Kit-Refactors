@@ -1,9 +1,9 @@
 /*
-   Light-Controlled Theremin using
-   Piezo Speaker, Potentiometer, and Photoresistor
+   Basic version of the Light-Controlled Theremin
+   using Piezo Speaker, Potentiometer, and Photoresistor
    by Mitchell Griest, Summer 2020
 
-   TinkerCad Circuit link:
+   TinkerCad Circuit link: https://www.tinkercad.com/things/26D7noXK8uq
 */
 
 const int BUZZER_PIN = 10;
@@ -22,8 +22,10 @@ void loop() {
   int lightValue = analogRead(PHOTORESISTOR_PIN);
   int duration = lightValue;
   playNoteFromKnob(knobValue, duration);
-  delay(duration* 1.1);
+  delay(duration * 1.1);
 }
+
+// -------------- Helper Functions --------------
 
 void playNoteFromKnob(int knobValue, int duration) {
   if (knobValue < 150) {
