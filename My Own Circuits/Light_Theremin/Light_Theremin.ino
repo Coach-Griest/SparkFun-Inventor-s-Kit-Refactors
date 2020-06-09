@@ -40,20 +40,24 @@ void playNoteFromKnob(int knobValue, int duration) {
     play('g', duration);
   } else if (knobValue < 900) {
     play('a', duration);
-  } else if (knobValue < 900) {
+  } else if (knobValue < 1000) {
     play('b', duration);
   } else {
     play('C', duration);
   }
 }
 
-void play(char note, int duration) {
-  if (note == 'c') tone(BUZZER_PIN, 262, duration);
-  else if (note == 'd') tone(BUZZER_PIN, 294, duration);
-  else if (note == 'e') tone(BUZZER_PIN, 330, duration);
-  else if (note == 'f') tone(BUZZER_PIN, 349, duration);
-  else if (note == 'g') tone(BUZZER_PIN, 392, duration);
-  else if (note == 'a') tone(BUZZER_PIN, 440, duration);
-  else if (note == 'b') tone(BUZZER_PIN, 494, duration);
-  else if (note == 'C') tone(BUZZER_PIN, 523, duration);
+void play(char note, int duration){
+  int frequency = 0;
+  
+  if(note == 'c') frequency = 262;
+  else if(note == 'd') frequency = 294;
+  else if(note == 'e') frequency = 330;
+  else if(note == 'f') frequency = 349;
+  else if(note == 'g') frequency = 392;
+  else if(note == 'a') frequency = 440;
+  else if(note == 'b') frequency = 494;
+  else if(note == 'C') frequency = 523;
+    
+  tone(BUZZER_PIN, frequency, duration);
 }
