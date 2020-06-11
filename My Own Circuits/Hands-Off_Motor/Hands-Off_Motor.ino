@@ -2,7 +2,7 @@
    Ultrasonic Range Finder-Controlled Servo Motor
    by Mitchell Griest, Summer 2020
 
-   TinkerCad Circuit link:
+   TinkerCad Circuit link: https://www.tinkercad.com/things/gW6ZYSPnUl7
 */
 #include <Servo.h> 
 
